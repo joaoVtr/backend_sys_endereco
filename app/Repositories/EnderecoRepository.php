@@ -45,11 +45,10 @@ class EnderecoRepository
     {
         $data = Endereco::where('CEP', $cep)->first();
 
-        if (isset($data)) {
+        if (isset($data))
             return $data;
-        } else {
-            return Http::get("viacep.com.br/ws/{$cep}/json/");
-        }
+
+        return Http::get("viacep.com.br/ws/{$cep}/json/");
     }
 
     /**
