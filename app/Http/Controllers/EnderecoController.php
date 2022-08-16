@@ -35,10 +35,8 @@ class EnderecoController extends Controller
      */
     public function store(StoreEnderecoRequest $request)
     {
-        dd($request);
-        $endereco = $this->repository->store($request->validate());
-
-        return EnderecoResource::collection($endereco);
+        $endereco = $this->repository->store($request->validated());
+        return new EnderecoResource($endereco);
     }
 
     /**
@@ -49,7 +47,7 @@ class EnderecoController extends Controller
      */
     public function show(Endereco $endereco)
     {
-        //
+        return new EnderecoResource($endereco);
     }
 
     /**
@@ -61,7 +59,9 @@ class EnderecoController extends Controller
      */
     public function update(UpdateEnderecoRequest $request, Endereco $endereco)
     {
-        //
+        $endereco->fill($request->validated())->save();
+
+        return new EnderecoResource($endereco);
     }
 
     /**
@@ -72,6 +72,7 @@ class EnderecoController extends Controller
      */
     public function destroy(Endereco $endereco)
     {
-        //
+        Endereco::destroy($endereco->id);
+        return response()->json([], 204);
     }
 }

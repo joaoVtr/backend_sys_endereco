@@ -24,7 +24,7 @@ class StoreEnderecoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cep' => 'required|string|formato_cep|max:9',
+            'CEP' => 'required|string|formato_cep|max:9',
             'logradouro' => 'required|string',
             'numero' => 'required|string|max:10',
             'complemento' => 'required|string',
@@ -43,9 +43,9 @@ class StoreEnderecoRequest extends FormRequest
     public function messages()
     {
         return [
-            'cep.formato_cep' => 'Favor digitar um cep com formato válido. Ex: (99999-999 ou 99.999-999)',
+            'CEP.formato_cep' => 'Favor digitar um cep com formato válido. Ex: (99999-999 ou 99.999-999)',
 
-            'cep.required' => 'O campo CEP é obrigatório',
+            'CEP.required' => 'O campo CEP é obrigatório',
             'logradouro.required' => 'O campo Logradouro é obrigatório',
             'numero.required' => 'O campo Número é obrigatório',
             'complemento.required' => 'O campo Complemento é obrigatório',
@@ -53,7 +53,7 @@ class StoreEnderecoRequest extends FormRequest
             'cidade.required' => 'O campo Cidade é obrigatório',
             'estado.required' => 'O campo Estado é obrigatório',
 
-            'cep.string' => 'O campo Cep deve ser do tipo String',
+            'CEP.string' => 'O campo Cep deve ser do tipo String',
             'logradouro.string' => 'O campo Logradouro deve ser do tipo String',
             'numero.string' => 'O campo Número deve ser do tipo String',
             'complemento.string' => 'O campo Complemento deve ser do tipo String',
@@ -64,7 +64,7 @@ class StoreEnderecoRequest extends FormRequest
             'estado.max' => 'O campo Estado deve ter no máximo 30 caracteres',
             'cidade.max' => 'O campo Cidade deve ter no máximo 50 caracteres',
             'numero.max' => 'O campo Número deve ter no máximo 10 caracteres',
-            'cep.max' => 'O campo Número deve ter no máximo 9 caracteres',
+            'CEP.max' => 'O campo Número deve ter no máximo 9 caracteres',
         ];
     }
 }

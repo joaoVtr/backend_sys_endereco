@@ -16,12 +16,12 @@ class EnderecoRepository
     }
 
     /**
-     * Salva os dados
+     * Salva os dados no banco de dados
      */
     public function store($data)
     {
         try {
-            DB::transaction();
+            DB::beginTransaction();
 
             $res = Endereco::create($data);
 
@@ -29,7 +29,7 @@ class EnderecoRepository
 
             return $res;
         } catch (\Exception $error) {
-
+            DB::rollBack();
             return response()->json(['Error' => $error->getMessage()], 404);
         }
     }
