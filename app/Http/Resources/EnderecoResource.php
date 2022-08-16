@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class EnderecoResource extends JsonResource
 {
@@ -16,13 +17,13 @@ class EnderecoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'cep' => $this->CEP,
+            'cep' => Str::substrReplace($this->CEP, '-', 5, 0),
             'logradouro' => $this->logradouro,
             'numero' => $this->numero,
             'complemento' => $this->complemento,
             'bairro' => $this->bairro,
             'cidade' => $this->cidade,
-            'estado' => $this->estado
+            'estado' => $this->estado,
         ];
     }
 }

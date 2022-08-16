@@ -24,7 +24,7 @@ class StoreEnderecoRequest extends FormRequest
     public function rules()
     {
         return [
-            'CEP' => 'required|string|formato_cep|max:9',
+            'CEP' => 'required|string|digits:8',
             'logradouro' => 'required|string',
             'numero' => 'required|string|max:10',
             'complemento' => 'required|string',
@@ -33,7 +33,6 @@ class StoreEnderecoRequest extends FormRequest
             'estado' => 'required|string|max:30'
         ];
     }
-
 
     /**
      * Get the error messages for the defined validation rules.
@@ -64,7 +63,8 @@ class StoreEnderecoRequest extends FormRequest
             'estado.max' => 'O campo Estado deve ter no máximo 30 caracteres',
             'cidade.max' => 'O campo Cidade deve ter no máximo 50 caracteres',
             'numero.max' => 'O campo Número deve ter no máximo 10 caracteres',
-            'CEP.max' => 'O campo Número deve ter no máximo 9 caracteres',
+
+            'CEP.digits' => 'O campo Número deve ter no exatamente 8 caracteres Numéricos',
         ];
     }
 }

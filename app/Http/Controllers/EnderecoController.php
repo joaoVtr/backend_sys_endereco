@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateEnderecoRequest;
 use App\Http\Resources\EnderecoResource;
 use App\Models\Endereco;
 use App\Repositories\EnderecoRepository;
+use Illuminate\Http\Request;
 
 class EnderecoController extends Controller
 {
@@ -74,5 +75,21 @@ class EnderecoController extends Controller
     {
         Endereco::destroy($endereco->id);
         return response()->json([], 204);
+    }
+
+    public function searchByCep(Request $request)
+    {
+        if ($request->has('cep'))
+            return $this->repository->seachByCep($request['cep']);
+
+        return response()->json(['msg' => 'Nenhum cep enviado'], 404);
+    }
+
+    public function searchByLogradouro(Request $request)
+    {
+        if ($request->has('logradouro'))
+            return $this->repository->searchByLogradouro($request['logradouro']);
+
+        return response()->json(['msg' => 'Nenhum logradouro enviado'], 404);
     }
 }

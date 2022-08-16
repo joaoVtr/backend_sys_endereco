@@ -15,4 +15,8 @@ use App\Http\Controllers\EnderecoController;
 |
 */
 
-Route::apiResource('enderecos', EnderecoController::class);
+Route::controller(EnderecoController::class)->group(function () {
+    Route::get('enderecos/cep', 'searchByCep');
+    Route::get('enderecos/logradouro', 'searchByLogradouro');
+    Route::apiResource('enderecos', EnderecoController::class);
+});

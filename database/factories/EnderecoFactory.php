@@ -17,7 +17,7 @@ class EnderecoFactory extends Factory
     public function definition()
     {
         return [
-            'CEP' => fake()->numerify('#####-###'),
+            'CEP' => fake()->numerify('########'),
             'logradouro' => fake()->streetName(),
             'numero' => fake()->numberBetween(1, 500),
             'complemento' => fake()->sentence(3),
