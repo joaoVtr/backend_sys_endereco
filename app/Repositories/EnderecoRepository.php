@@ -6,17 +6,14 @@ use App\Models\Endereco;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
-
 class EnderecoRepository
 {
     /**
      * Retorna todos os endereços
      */
-    public function index()
+    public function index($per_page)
     {
-        return Endereco::paginate(20);
+        return Endereco::paginate($per_page ?? 20);
     }
 
     /**

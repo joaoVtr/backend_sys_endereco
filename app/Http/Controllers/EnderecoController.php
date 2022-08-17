@@ -21,9 +21,9 @@ class EnderecoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $endereco = $this->repository->index();
+        $endereco = $this->repository->index($request->per_page);
 
         return EnderecoResource::collection($endereco);
     }
